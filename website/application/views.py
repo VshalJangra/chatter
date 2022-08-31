@@ -44,6 +44,16 @@ def history():
     print(json_messages)
     return render_template("history.html", **{"history": json_messages})
 
+@view.route("/snooze")
+def snooze():
+    if NAME_KEY not in session:
+        flash("0Please login before viewing message history")
+        return redirect(url_for("views.login"))
+
+    json_messages = get_history(session[NAME_KEY])
+    print(json_messages)
+    return render_template("snooze.html", **{"history": json_messages})
+
 @view.route("/get_name")
 def get_name():
     data = {"name": ""}
