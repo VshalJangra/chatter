@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Message History{% endblock %}
+{% block title %}Snoozed Chat{% endblock %}
 
 {% block content %}
 
@@ -8,9 +8,10 @@
  
     <div class="col"><hr></div>
     <div class="col-auto"><p class="h3" align="center">Snoozed Chat</p></div>
+    <a class="nav-item nav-link" href="/unsnooze">Un-Snooze</a>
+
     <nav class="navbar navbar-expand-sm bg-light navbar-light"></nav>
     <div class="col"><hr></div>
-   
 </div>
 <div class="container">
     <div class="overflow-auto" class="msgs" id="messagesHistory" style="overflow-y: scroll; height:500px;">
@@ -19,4 +20,14 @@
         {% endfor %}
     </div>
 </div>
+
+<script>
+
+    function unsnooze(){
+        window.location.href = "/unsnooze";
+    }
+
+    let timeoutId = setTimeout(unsnooze, 5000);
+    
+</script>
 {% endblock %}
